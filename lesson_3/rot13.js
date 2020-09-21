@@ -1,6 +1,6 @@
 const SHIFT = 13;
 const LAST_UPPER_LETTER = 'Z'.charCodeAt(0);
-const LAST_LOWER_lETTER = 'z'.charCodeAt(0);
+const LAST_LOWER_LETTER = 'z'.charCodeAt(0);
 
 function isUpperLetter(char) {
   return (char.toUpperCase() !== char.toLowerCase()) &&
@@ -13,8 +13,8 @@ function isLowerLetter(char) {
 }
 
 function rotateLetter(char) {
+  let charCode = char.charCodeAt(0);
   if (isUpperLetter(char)) {
-    let charCode = char.charCodeAt(0);
     if (charCode + SHIFT > LAST_UPPER_LETTER) {
       charCode -= SHIFT;
     } else {
@@ -23,8 +23,7 @@ function rotateLetter(char) {
 
     return String.fromCharCode(charCode);
   } else if (isLowerLetter(char)) {
-    let charCode = char.charCodeAt(0);
-    if (charCode + SHIFT > LAST_LOWER_lETTER) {
+    if (charCode + SHIFT > LAST_LOWER_LETTER) {
       charCode -= SHIFT;
     } else {
       charCode += SHIFT;
@@ -38,8 +37,8 @@ function rotateLetter(char) {
 
 function rot13(string) {
   let rotated = '';
-  for (let i = 0; i < string.length; i++) {
-    rotated += rotateLetter(string[i]);
+  for (let index = 0; index < string.length; index++) {
+    rotated += rotateLetter(string[index]);
   }
 
   return rotated;
